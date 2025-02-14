@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import BookForm from "../components/CreateForm";
 import { useGetAudioBookAPIQuery } from "../store/audioBooks/audioBookApiSlice";
 import { getAuthorBookList } from "../store/user/authSlice";
+import EditAudioBook from "../components/EditAudioBook.jsx";
 
 const AuthorPage = () => {
   const dispatch = useDispatch();
@@ -60,7 +61,7 @@ const AuthorPage = () => {
             }`}
             onClick={() => handleLinkClick("settings")}
           >
-            Settings
+            Edit Audio book
           </Link>
         </nav>
       </aside>
@@ -78,7 +79,7 @@ const AuthorPage = () => {
         )}
         {selectedPage === "settings" && (
           // <Settings /> // Uncomment when you import the component
-          <div>Settings Content</div>
+          <div>{<EditAudioBook />}</div>
         )}
       </main>
     </div>

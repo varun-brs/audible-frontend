@@ -16,8 +16,33 @@ export const audioBookAPISlice = apiSlice.injectEndpoints({
         method: "GET",
       }),
     }),
+    searchAudioBookAPI: builder.query({
+      query: (searchQuery) => ({
+        url: `${USER_ENDPOINT}/search?q=${searchQuery}`, // Pass search query as query parameter
+        method: "GET",
+      }),
+    }),
+    updateAudioBook: builder.mutation({
+      query: ({ id, ...updatedData }) => ({
+        url: `${USER_ENDPOINT}/editaudiobooks/${id}`,
+        method: "PATCH",
+        body: updatedData,
+      }),
+    }),
+    // Delete audiobook
+    deleteAudioBookApi: builder.mutation({
+      query: (bookId) => ({
+        url: `${USER_ENDPOINT}/deleteaudiobooks/${bookId}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
-export const { useAudioBookRegisterAPIMutation, useGetAudioBookAPIQuery } =
-  audioBookAPISlice;
+export const {
+  useAudioBookRegisterAPIMutation,
+  useGetAudioBookAPIQuery,
+  useSearchAudioBookAPIQuery,
+  useUpdateAudioBookMutation,
+  useDeleteAudioBookApiMutation,
+} = audioBookAPISlice;

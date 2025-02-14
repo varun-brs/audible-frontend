@@ -3,8 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 const userData = JSON.parse(localStorage.getItem("userdata")) || null;
 const token = JSON.parse(localStorage.getItem("token")) || null;
 const rawUserData = localStorage.getItem("authorBookList");
+const searchrawData = localStorage.getItem("searchAudioBookList");
 const authorBookList =
   rawUserData && rawUserData !== "undefined" ? JSON.parse(rawUserData) : null;
+const searchAudioBookList =
+  searchrawData && searchrawData !== "undefined"
+    ? JSON.parse(searchrawData)
+    : null;
 // const authorBookList = JSON.parse(localStorage.getItem("authorBookList")) || [];
 
 const initialState = {
@@ -12,6 +17,7 @@ const initialState = {
   isLoggedIn: !!token,
   userData,
   authorBookList,
+  searchAudioBookList,
 };
 
 const authSlice = createSlice({
@@ -30,6 +36,7 @@ const authSlice = createSlice({
       localStorage.removeItem("token");
       localStorage.removeItem("userdata");
       localStorage.removeItem("authorBookList");
+      localStorage.removeItem("searchAudioBookList");
       state.isLoggedIn = false;
     },
     setUserProfile: (state, action) => {
@@ -43,6 +50,20 @@ const authSlice = createSlice({
       state.authorBookList = action.payload;
       localStorage.setItem("authorBookList", JSON.stringify(action.payload));
       console.log(state.authorBookList);
+    },
+    searchAudioBooks: (state, action) => {
+      state.authorBookList = action.payload;
+      localStorage.setItem(
+        "searchAudioBookList",
+        JSON.stringify(action.payload)
+      );
+    },
+    deleteAudioBook: (state, action) => {
+      const updatedBookList = state.authorBookList.filter(
+        (book) => book._id !== action.payload
+      );
+      state.authorBookList = updatedBookList;
+      localStorage.setItem("authorBookList", JSON.stringify(updatedBookList));
     },
     // updateUserProfile: (state, action) => {
     //   state.userData = { ...userData, ...action.payload };
@@ -81,6 +102,8 @@ export const {
   logout,
   setUserProfile,
   getAuthorBookList,
+  searchAudioBooks,
+  deleteAudioBook,
   //   updateUserProfile,
   //   toggleLanguageSelection,
   //   toggleSidebar,

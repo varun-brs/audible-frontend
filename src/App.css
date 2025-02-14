@@ -183,6 +183,46 @@ label {
   --transform-scale-y: 0;
 }
 
+/* Basic modal styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  text-align: center;
+  color: black;
+}
+
+.delete-btn,
+.cancel-btn {
+  width: 50%;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background-color: red;
+  color: white;
+}
+
+.cancel-btn {
+  background-color: gray;
+  color: white;
+}
+
 .added-sidebar {
   background-color: #443280;
 }

@@ -31,6 +31,7 @@ export const userAPISlice = apiSlice.injectEndpoints({
         method: "GET",
       }),
     }),
+
     //     updateUserProfileAPI: builder.mutation({
     //       query: (data) => ({
     //         url: `${USER_ENDPOINT}/profile`,

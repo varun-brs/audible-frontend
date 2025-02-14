@@ -11,6 +11,7 @@ import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import AuthorPage from "./pages/AuthorPage";
 import EmailVerifyPage from "./pages/EmailVerifyPage";
+import EditPage from "./components/EditPage";
 
 // Defining the routes
 const router = createBrowserRouter([
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
           { path: "/home", element: <HomePage /> },
           { path: "/profile", element: <ProfilePage /> },
           { path: "/author", element: <AuthorPage /> },
+          { path: "/edit-page/:id", element: <EditPage /> },
         ],
       },
     ],
