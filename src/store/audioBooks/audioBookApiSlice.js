@@ -36,6 +36,11 @@ export const audioBookAPISlice = apiSlice.injectEndpoints({
         method: "DELETE",
       }),
     }),
+    allAudioBooksApi: builder.query({
+      query: (bookId) => ({
+        url: `${USER_ENDPOINT}/getallaudiobooks`,
+      }),
+    }),
   }),
 });
 
@@ -45,4 +50,5 @@ export const {
   useSearchAudioBookAPIQuery,
   useUpdateAudioBookMutation,
   useDeleteAudioBookApiMutation,
+  useAllAudioBooksApiQuery,
 } = audioBookAPISlice;

@@ -4,12 +4,15 @@ const userData = JSON.parse(localStorage.getItem("userdata")) || null;
 const token = JSON.parse(localStorage.getItem("token")) || null;
 const rawUserData = localStorage.getItem("authorBookList");
 const searchrawData = localStorage.getItem("searchAudioBookList");
+const allrawData = localStorage.getItem("allAudioBooks");
 const authorBookList =
   rawUserData && rawUserData !== "undefined" ? JSON.parse(rawUserData) : null;
 const searchAudioBookList =
   searchrawData && searchrawData !== "undefined"
     ? JSON.parse(searchrawData)
     : null;
+const allAudioBooks =
+  allrawData && allrawData !== "undefined" ? JSON.parse(allrawData) : null;
 // const authorBookList = JSON.parse(localStorage.getItem("authorBookList")) || [];
 
 const initialState = {
@@ -18,6 +21,7 @@ const initialState = {
   userData,
   authorBookList,
   searchAudioBookList,
+  allAudioBooks,
 };
 
 const authSlice = createSlice({
@@ -64,6 +68,10 @@ const authSlice = createSlice({
       );
       state.authorBookList = updatedBookList;
       localStorage.setItem("authorBookList", JSON.stringify(updatedBookList));
+    },
+    allAudioBooks: (state, action) => {
+      state.userData = action.payload;
+      localStorage.setItem("allAudioBooks", JSON.stringify(action.payload));
     },
     // updateUserProfile: (state, action) => {
     //   state.userData = { ...userData, ...action.payload };
