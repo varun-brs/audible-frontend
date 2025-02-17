@@ -224,7 +224,7 @@ label {
 }
 
 .added-sidebar {
-  background-color: #443280;
+  background-color: #4cafec;
 }
 
 .added-sidebar a:hover {
@@ -234,7 +234,7 @@ label {
 
 .added-sidebar-hover {
   background-color: white; /* gray-700 */
-  color: #443280;
+  color: #4cafec;
 }
 
 #user-menu ~ #user-menu-dropdown:focus-within,
@@ -259,7 +259,7 @@ body,
 #root {
   height: 100%;
   --tw-bg-opacity: 1;
-  background-color: #443280;
+  background-color: #1da1f2;
   --tw-text-opacity: 1;
   color: rgba(255, 255, 255, var(--tw-text-opacity));
   -webkit-font-smoothing: antialiased;
@@ -271,7 +271,7 @@ body,
 }
 
 .bg-purple {
-  background: #291f4e;
+  background: #1da1f2;
 }
 .bg-blueBack {
   background-color: #4bafef;
@@ -284,10 +284,10 @@ body,
   background-color: rgba(255, 255, 255, 0.2);
 }
 .selectBox {
-  background: #703fce;
+  background: #1da1f2;
 }
 .bg-brandColor {
-  background-color: #291f4e;
+  background-color: #1da1f2;
 }
 
 .bg-header-gradient {
@@ -303,7 +303,7 @@ body,
             }*/
 
 .btnPurpleColor {
-  background-color: #5d4dd5;
+  background-color: #1da1f2;
 }
 
 .siraledge::after {

@@ -41,6 +41,7 @@ const authSlice = createSlice({
       localStorage.removeItem("userdata");
       localStorage.removeItem("authorBookList");
       localStorage.removeItem("searchAudioBookList");
+      localStorage.removeItem("allAudioBooks");
       state.isLoggedIn = false;
     },
     setUserProfile: (state, action) => {
@@ -70,7 +71,7 @@ const authSlice = createSlice({
       localStorage.setItem("authorBookList", JSON.stringify(updatedBookList));
     },
     allAudioBooks: (state, action) => {
-      state.userData = action.payload;
+      state.allAudioBooks = action.payload;
       localStorage.setItem("allAudioBooks", JSON.stringify(action.payload));
     },
     // updateUserProfile: (state, action) => {
@@ -112,6 +113,7 @@ export const {
   getAuthorBookList,
   searchAudioBooks,
   deleteAudioBook,
+
   //   updateUserProfile,
   //   toggleLanguageSelection,
   //   toggleSidebar,

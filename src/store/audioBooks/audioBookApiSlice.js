@@ -37,8 +37,15 @@ export const audioBookAPISlice = apiSlice.injectEndpoints({
       }),
     }),
     allAudioBooksApi: builder.query({
-      query: (bookId) => ({
+      query: () => ({
         url: `${USER_ENDPOINT}/getallaudiobooks`,
+        method: "GET",
+      }),
+    }),
+    getAudioBooksByCategoryAPI: builder.query({
+      query: (categoryId) => ({
+        url: `/api/audiobooks/getaudiobooks/category/${categoryId}`,
+        method: "GET",
       }),
     }),
   }),
@@ -51,4 +58,5 @@ export const {
   useUpdateAudioBookMutation,
   useDeleteAudioBookApiMutation,
   useAllAudioBooksApiQuery,
+  useGetAudioBooksByCategoryAPIQuery,
 } = audioBookAPISlice;

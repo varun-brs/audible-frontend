@@ -12,6 +12,7 @@ const EditAudioBook = () => {
   const handleClick = (ele) => {
     navigate(`/edit-page/${ele._id}`, { state: { book: ele } });
   };
+
   return (
     <>
       <div className="flex justify-center mt-2.5">
@@ -22,27 +23,24 @@ const EditAudioBook = () => {
           placeholder="Search..."
           className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
-        {/* <button
-        
-        className="px-4 py-2 added-sidebar  text-white rounded-r-lg hover:bg-green-600 focus:outline-none"
-      >
-        Search
-      </button> */}
       </div>
-      <div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6">
         {data && Array.isArray(data) && data.length > 0 ? (
           data.map((ele, index) => {
             return (
               <div
                 key={index}
-                className="mt-8 hover:bg-gray-300"
+                className="max-w-sm rounded overflow-hidden shadow-lg bg-white p-4 cursor-pointer hover:shadow-xl transition-shadow"
                 onClick={() => handleClick(ele)}
               >
-                <p>{ele.book_name}</p>
-                <p>{ele.author_first_name}</p>
-                <p>{ele.author_id}</p>
-                <p>{ele.category}</p>
-                <p>{ele.language}</p>
+                <div className="font-bold text-xl mb-2">{ele.book_name}</div>
+                <p className="text-gray-700 text-base mb-4">{ele.category}</p>
+                <p className="text-gray-500 text-sm">
+                  Author: {ele.author_first_name}
+                </p>
+                <p className="text-gray-500 text-sm">
+                  Language: {ele.language}
+                </p>
               </div>
             );
           })

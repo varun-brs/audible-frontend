@@ -60,7 +60,7 @@ const LoginPage = () => {
   return (
     <>
       <div className="grid place-items-center mb-3">
-        <img className="w-16 h-16" src="/images/logo.svg" alt="Workflow" />
+        <h1 className="font-bold">Audible</h1>
       </div>
       <div className="Auth-form-container">
         <div className="Auth-form">
