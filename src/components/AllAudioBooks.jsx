@@ -10,7 +10,7 @@ const AllAudioBooks = ({ audioBooks }) => {
       {audioBooks.map((book) => (
         <div
           key={book._id}
-          className="max-w-sm rounded overflow-hidden shadow-lg bg-white p-4 mt-5"
+          className="max-w-sm rounded overflow-hidden shadow-lg bg-white p-4 mt-5 transform transition duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:bg-gray-100"
         >
           <div className="font-bold text-xl mb-2">{book.book_name}</div>
           <p className="text-gray-700 text-base mb-4">{book.description}</p>

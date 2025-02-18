@@ -30,7 +30,7 @@ const EditAudioBook = () => {
             return (
               <div
                 key={index}
-                className="max-w-sm rounded overflow-hidden shadow-lg bg-white p-4 cursor-pointer hover:shadow-xl transition-shadow"
+                className="max-w-sm rounded overflow-hidden shadow-lg bg-white p-4 cursor-pointer hover:shadow-xl hover:scale-105 transition-transform transition-shadow duration-300 ease-in-out"
                 onClick={() => handleClick(ele)}
               >
                 <div className="font-bold text-xl mb-2">{ele.book_name}</div>
