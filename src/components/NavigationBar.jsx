@@ -16,7 +16,7 @@ const NavigationBar = () => {
 
   const logoutHandler = () => {
     dispatch(logout());
-    navigate("/login", { replace: true });
+    navigate("/audible-frontend/login", { replace: true });
   };
 
   return (
