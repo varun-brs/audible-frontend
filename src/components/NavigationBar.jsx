@@ -123,9 +123,6 @@ const NavigationBar = () => {
                   </svg>
                 </NavLink>
                 <ul className="dropdown_menu dropdown_menu--animated dropdown_menu-6">
-                  <li className="dropdown_item-2 rounded-t-xl">
-                    <NavLink to="/profile">Account</NavLink>
-                  </li>
                   <li className="dropdown_item-1 rounded-b-xl">
                     <button onClick={logoutHandler}>Logout</button>
                   </li>
