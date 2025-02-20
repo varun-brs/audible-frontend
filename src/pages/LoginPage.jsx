@@ -80,7 +80,7 @@ const LoginPage = () => {
                     <Field
                       type="email"
                       name="email"
-                      placeholder="catherine.shaw@gmail.com"
+                      placeholder="Enter Your Email"
                       className="bg-gray-50 border-0 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 px-0 bg-white outline-0"
                     />
                     <ErrorMessage
