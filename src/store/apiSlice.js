@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:3011",
+  baseUrl: "https://audible-backend-3.onrender.com",
   prepareHeaders: (headers, { getState }) => {
     const state = getState();
 
