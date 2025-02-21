@@ -44,6 +44,7 @@ const LoginPage = () => {
         role: values.role,
       }).unwrap();
       toast.success("You logged in successfully!");
+      console.log(response);
       dispatch(login({ ...response }));
       navigate("/home");
     } catch (error) {
