@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const userData = JSON.parse(localStorage.getItem("userdata")) || null;
-const token = JSON.parse(localStorage.getItem("token")) || null;
+const rawInitialuserData = localStorage.getItem("userdata");
+const rawToken = localStorage.getItem("token");
 const rawUserData = localStorage.getItem("authorBookList");
 const searchrawData = localStorage.getItem("searchAudioBookList");
 const allrawData = localStorage.getItem("allAudioBooks");
@@ -13,6 +13,12 @@ const searchAudioBookList =
     : null;
 const allAudioBooks =
   allrawData && allrawData !== "undefined" ? JSON.parse(allrawData) : null;
+const token =
+  rawToken && rawToken !== "undefined" ? JSON.parse(rawToken) : null;
+const userData =
+  rawInitialuserData && rawInitialuserData !== "undefined"
+    ? JSON.parse(rawInitialuserData)
+    : null;
 // const authorBookList = JSON.parse(localStorage.getItem("authorBookList")) || [];
 
 const initialState = {
