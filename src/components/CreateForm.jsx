@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useAudioBookRegisterAPIMutation } from "../store/audioBooks/audioBookApiSlice";
@@ -9,13 +9,24 @@ const initialValues = {
   category: "",
   book_name: "",
   description: "",
+  // book_cover_image: null, // Set initial value to null for file input
 };
+
+const SUPPORTED_FORMATS = ["image/jpg", "image/jpeg", "image/png"];
+const MAX_FILE_SIZE = 2 * 1024 * 1024;
 
 const validationSchema = Yup.object({
   language: Yup.string().required("Language is required"),
   category: Yup.string().required("Category is required"),
   book_name: Yup.string().required("Book Name is required"),
   description: Yup.string().required("Description is required"),
+  // book_cover_image: Yup.mixed()
+  //   .required("Image is required")
+  //   .test(
+  //     "fileSize",
+  //     "File size too large! Max 2 MB allowed.",
+  //     (file) => file && file.size <= MAX_FILE_SIZE
+  //   ),
 });
 
 const BookForm = () => {
@@ -24,17 +35,23 @@ const BookForm = () => {
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     setSubmitting(true);
     try {
-      const response = await audioBookRegisterAPI({
-        book_name: values.book_name,
-        category: values.category,
-        language: values.language,
-        description: values.description,
-      }).unwrap();
+      // Create formData for file upload along with other values if needed
+      const formData = new FormData();
+      formData.append("book_name", values.book_name);
+      formData.append("category", values.category);
+      formData.append("language", values.language);
+      formData.append("description", values.description);
+      // formData.append("book_cover_image", values.book_cover_image);
+      // Append the file, key should match with backend key
+
+      // Make API call here. Example using your audioBookRegisterAPI
+      const response = await audioBookRegisterAPI(formData).unwrap();
       toast.success(response.message);
       resetForm();
       setSubmitting(false);
     } catch (error) {
       toast.error(error?.data?.message || error.error);
+      setSubmitting(false);
     }
   };
 
@@ -48,8 +65,9 @@ const BookForm = () => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {({ values, isSubmitting }) => (
+        {({ values, isSubmitting, setFieldValue }) => (
           <Form className="space-y-4">
+            {/* Language Field */}
             <div>
               <label className="block text-black">Language</label>
               <Field
@@ -69,6 +87,7 @@ const BookForm = () => {
               />
             </div>
 
+            {/* Category Field */}
             <div>
               <label className="block text-black">Category</label>
               <Field
@@ -88,6 +107,7 @@ const BookForm = () => {
               />
             </div>
 
+            {/* Book Name Field */}
             <div>
               <label className="block text-black">Book Name</label>
               <Field
@@ -103,6 +123,7 @@ const BookForm = () => {
               />
             </div>
 
+            {/* Description Field */}
             <div>
               <label className="block text-black">Description</label>
               <Field
@@ -117,6 +138,25 @@ const BookForm = () => {
                 className="text-red-500 text-sm"
               />
             </div>
+
+            {/* Image Upload Field
+            <div>
+              <label className="block text-black mb-1">Book Cover Image</label>
+              <input
+                type="file"
+                name="book_cover_image"
+                accept="image/*"
+                onChange={(event) =>
+                  setFieldValue("book_cover_image", event.target.files[0])
+                }
+                className="  text-black file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-white file:bg-blue-500 hover:file:bg-blue-600"
+              />
+              <ErrorMessage
+                name="book_cover_image"
+                component="div"
+                className="text-red-500 text-sm"
+              />
+            </div> */}
 
             <button
               type="submit"
